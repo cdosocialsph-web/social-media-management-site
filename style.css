@@ -1,178 +1,36 @@
 /* ---------------------------------
-   GRADIENT + BLOBS BACKGROUND
+   NAVIGATION
 ---------------------------------- */
-body {
-  background: linear-gradient(120deg, #e3f2fd, #f3e5f5, #fff8e1);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-  transition: background-color 1s ease, color 1s ease;
-  overflow-x: hidden;
+nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.background-blobs {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.background-blobs::before,
-.background-blobs::after,
-.background-blobs div::before {
-  content: "";
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  filter: blur(100px);
-  opacity: 0.4;
-  animation: floatBlobs 20s ease-in-out infinite alternate;
-}
-
-.background-blobs::before {
-  background: radial-gradient(circle at center, #6c63ff, transparent 70%);
-  top: -200px;
-  left: -150px;
-}
-
-.background-blobs::after {
-  background: radial-gradient(circle at center, #ff8a65, transparent 70%);
-  bottom: -250px;
-  right: -150px;
-}
-
-.background-blobs div::before {
-  background: radial-gradient(circle at center, #9575cd, transparent 70%);
-  top: 40%;
-  left: 30%;
-}
-
-@keyframes floatBlobs {
-  from { transform: translateY(0) rotate(0deg); }
-  to { transform: translateY(-30px) rotate(30deg); }
-}
-
-/* Dark mode gradient */
-body.dark-mode {
-  background: linear-gradient(120deg, #121212, #1e1e1e, #2c2c2c);
-  background-size: 400% 400%;
-  animation: gradientShift 20s ease infinite;
-}
-
-/* ---------------------------------
-   BLOG PAGE STYLES
----------------------------------- */
-.blog {
-  text-align: center;
-  padding: 80px 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.blog h2 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: inherit;
-}
-
-.blog .subtitle {
-  color: #444;
-  font-size: 18px;
-  margin-bottom: 50px;
-}
-
-.blog-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  justify-items: center;
-}
-
-.blog-list article {
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  max-width: 320px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.blog-list article:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-}
-
-.blog-list img {
-  width: 100%;
-  height: 180px;
-  object-fit: cover;
-}
-
-.blog-list h3 {
-  font-size: 20px;
-  margin: 15px;
-}
-
-.blog-list h3 a {
-  color: #5c6bc0;
+.nav-link {
+  color: #fff;
   text-decoration: none;
-  transition: color 0.3s;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-.blog-list h3 a:hover {
-  color: #3f51b5;
-}
-
-.blog-list p {
-  font-size: 16px;
-  color: #555;
-  margin: 0 15px 20px;
-}
-
-.blog-list .read-more {
-  display: inline-block;
-  margin-bottom: 20px;
-  color: #3f51b5;
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.blog-list .read-more:hover {
-  color: #1a237e;
-  text-decoration: underline;
-}
-
-nav a.active {
+.nav-link:hover {
   color: #ffeb3b;
-  font-weight: bold;
 }
 
-/* Dark Mode Adjustments */
-body.dark-mode .blog-list article {
-  background: rgba(30, 30, 30, 0.9);
-  color: #ddd;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+.nav-link.active {
+  border-bottom: 2px solid #ffeb3b;
 }
 
-body.dark-mode .blog-list h3 a {
-  color: #b39ddb;
+body.light-mode .nav-link {
+  color: #333;
 }
 
-body.dark-mode .blog-list p {
-  color: #ccc;
+body.light-mode .nav-link.active {
+  border-bottom: 2px solid #5c6bc0;
 }
 
-body.dark-mode .blog .subtitle {
-  color: #aaa;
+.logo {
+  text-decoration: none;
+  color: inherit;
 }

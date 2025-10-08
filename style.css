@@ -1,4 +1,6 @@
-/* Global Styles */
+/* ---------------------------------
+   GLOBAL BASE STYLES
+---------------------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -6,128 +8,269 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  font-family: "Poppins", Arial, sans-serif;
+  line-height: 1.6;
   color: #333;
-  transition: background-color 0.3s, color 0.3s;
+  background: linear-gradient(135deg, #ffffff, #f0f0f0, #e8eaf6);
+  background-attachment: fixed;
+  transition: background 1.5s ease, color 1s ease;
+}
+
+/* ---------------------------------
+   HEADER
+---------------------------------- */
+header {
+  background: rgba(26, 26, 26, 0.9);
+  color: #fff;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
 }
 
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-}
-
-header {
-  background-color: #1a1a1a;
-  color: #fff;
-  padding: 20px 0;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 button.theme-toggle {
   background: none;
   border: none;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
+  color: #fff;
+  transition: transform 0.3s ease;
 }
 
+button.theme-toggle:hover {
+  transform: rotate(20deg);
+}
+
+/* ---------------------------------
+   HERO SECTION
+---------------------------------- */
 .hero {
-  background-color: #f2f2f2;
-  padding: 80px 20px;
   text-align: center;
+  padding: 100px 20px;
+  color: #333;
+  position: relative;
 }
 
 .hero h2 {
-  font-size: 32px;
-  color: #333;
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  margin-bottom: 25px;
 }
 
 .cta-button {
   display: inline-block;
-  padding: 12px 24px;
+  padding: 14px 28px;
   background-color: #5c6bc0;
   color: #fff;
   text-decoration: none;
-  border-radius: 5px;
-  margin-top: 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
 }
 
 .cta-button:hover {
   background-color: #3f51b5;
+  transform: translateY(-2px);
 }
 
+/* ---------------------------------
+   SERVICES SECTION
+---------------------------------- */
 .services {
-  padding: 50px 20px;
-  background-color: #fff;
+  background: rgba(255,255,255,0.8);
   text-align: center;
+  padding: 80px 20px;
+  backdrop-filter: blur(4px);
+}
+
+.services h2 {
+  font-size: 30px;
+  margin-bottom: 40px;
 }
 
 .service-item {
-  margin: 20px 0;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  background: #fafafa;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.service-item:hover {
+  transform: translateY(-5px);
 }
 
 .service-item h3 {
   font-size: 24px;
+  margin-bottom: 10px;
+  color: #5c6bc0;
 }
 
 .price {
-  margin-top: 40px;
+  margin-top: 50px;
   font-size: 28px;
   font-weight: bold;
+  color: #3f51b5;
 }
 
+/* ---------------------------------
+   CONTACT SECTION
+---------------------------------- */
 .contact {
-  background-color: #333;
+  background: linear-gradient(135deg, #5c6bc0, #7e57c2);
   color: #fff;
-  padding: 50px 20px;
   text-align: center;
+  padding: 70px 20px;
 }
 
 .contact a {
-  color: #fff;
+  color: #ffeb3b;
   text-decoration: none;
 }
 
-footer {
-  background-color: #1a1a1a;
-  color: #fff;
-  text-align: center;
-  padding: 20px 0;
+.contact a:hover {
+  text-decoration: underline;
 }
 
-/* Light Mode Styles */
+/* ---------------------------------
+   FOOTER
+---------------------------------- */
+footer {
+  background-color: #1a1a1a;
+  color: #ccc;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+}
+
+/* ---------------------------------
+   LIGHT & DARK MODE TRANSITIONS
+---------------------------------- */
 body.light-mode {
-  background-color: #f4f4f4;
+  background: linear-gradient(135deg, #ffffff, #f0f0f0, #e8eaf6);
   color: #333;
 }
 
-button.theme-toggle {
-  color: #fff;
-}
-
-/* Dark Mode Styles */
 body.dark-mode {
-  background-color: #121212;
-  color: #fff;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #eee;
 }
 
-body.dark-mode .hero {
-  background-color: #1f1f1f;
+/* Dark mode adjustments */
+body.dark-mode header {
+  background: rgba(0,0,0,0.85);
 }
 
 body.dark-mode .services {
-  background-color: #1f1f1f;
+  background: rgba(30,30,30,0.7);
+}
+
+body.dark-mode .service-item {
+  background: rgba(45,45,45,0.9);
+  color: #ddd;
+}
+
+body.dark-mode .price {
+  color: #b39ddb;
 }
 
 body.dark-mode .contact {
-  background-color: #1f1f1f;
+  background: linear-gradient(135deg, #4a148c, #311b92);
 }
 
-body.dark-mode footer {
-  background-color: #1f1f1f;
+/* ---------------------------------
+   FLOATING ABSTRACT BLOBS
+---------------------------------- */
+.background-blobs {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Create 3 softly blurred blobs */
+.background-blobs::before,
+.background-blobs::after,
+.background-blobs div {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.6;
+  animation: floatBlobs 20s ease-in-out infinite alternate;
+  transition: background 1.5s ease, opacity 1.5s ease;
+}
+
+/* Blob #1 */
+.background-blobs::before {
+  width: 400px;
+  height: 400px;
+  top: -100px;
+  left: -100px;
+  background: radial-gradient(circle, #ff80ab, #ff6584);
+  animation-delay: 0s;
+}
+
+/* Blob #2 */
+.background-blobs::after {
+  width: 350px;
+  height: 350px;
+  bottom: -120px;
+  right: -80px;
+  background: radial-gradient(circle, #6c63ff, #9575cd);
+  animation-delay: 5s;
+}
+
+/* Blob #3 (extra div) */
+.background-blobs div {
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 30%;
+  background: radial-gradient(circle, #ffb74d, #ff8a65);
+  animation-delay: 2.5s;
+}
+
+/* Floating animation */
+@keyframes floatBlobs {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(40px, -30px) scale(1.1); }
+  100% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* DARK MODE BLOBS */
+body.dark-mode .background-blobs::before {
+  background: radial-gradient(circle, #8e24aa, #4a148c);
+}
+
+body.dark-mode .background-blobs::after {
+  background: radial-gradient(circle, #3949ab, #1a237e);
+}
+
+body.dark-mode .background-blobs div {
+  background: radial-gradient(circle, #ff4081, #d81b60);
+  opacity: 0.5;
 }

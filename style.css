@@ -1,276 +1,178 @@
 /* ---------------------------------
-   GLOBAL BASE STYLES
+   GRADIENT + BLOBS BACKGROUND
 ---------------------------------- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: "Poppins", Arial, sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background: linear-gradient(135deg, #ffffff, #f0f0f0, #e8eaf6);
-  background-attachment: fixed;
-  transition: background 1.5s ease, color 1s ease;
+  background: linear-gradient(120deg, #e3f2fd, #f3e5f5, #fff8e1);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  transition: background-color 1s ease, color 1s ease;
+  overflow-x: hidden;
 }
 
-/* ---------------------------------
-   HEADER
----------------------------------- */
-header {
-  background: rgba(26, 26, 26, 0.9);
-  color: #fff;
-  padding: 15px 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(10px);
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-h1 {
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-
-button.theme-toggle {
-  background: none;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-  color: #fff;
-  transition: transform 0.3s ease;
-}
-
-button.theme-toggle:hover {
-  transform: rotate(20deg);
-}
-
-/* ---------------------------------
-   HERO SECTION
----------------------------------- */
-.hero {
-  text-align: center;
-  padding: 100px 20px;
-  color: #333;
-  position: relative;
-}
-
-.hero h2 {
-  font-size: 36px;
-  margin-bottom: 15px;
-}
-
-.hero p {
-  font-size: 18px;
-  margin-bottom: 25px;
-}
-
-.cta-button {
-  display: inline-block;
-  padding: 14px 28px;
-  background-color: #5c6bc0;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: background 0.3s, transform 0.2s;
-}
-
-.cta-button:hover {
-  background-color: #3f51b5;
-  transform: translateY(-2px);
-}
-
-/* ---------------------------------
-   SERVICES SECTION
----------------------------------- */
-.services {
-  background: rgba(255,255,255,0.8);
-  text-align: center;
-  padding: 80px 20px;
-  backdrop-filter: blur(4px);
-}
-
-.services h2 {
-  font-size: 30px;
-  margin-bottom: 40px;
-}
-
-.service-item {
-  max-width: 700px;
-  margin: 0 auto 40px;
-  background: #fafafa;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-  transition: transform 0.2s ease;
-}
-
-.service-item:hover {
-  transform: translateY(-5px);
-}
-
-.service-item h3 {
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #5c6bc0;
-}
-
-.price {
-  margin-top: 50px;
-  font-size: 28px;
-  font-weight: bold;
-  color: #3f51b5;
-}
-
-/* ---------------------------------
-   CONTACT SECTION
----------------------------------- */
-.contact {
-  background: linear-gradient(135deg, #5c6bc0, #7e57c2);
-  color: #fff;
-  text-align: center;
-  padding: 70px 20px;
-}
-
-.contact a {
-  color: #ffeb3b;
-  text-decoration: none;
-}
-
-.contact a:hover {
-  text-decoration: underline;
-}
-
-/* ---------------------------------
-   FOOTER
----------------------------------- */
-footer {
-  background-color: #1a1a1a;
-  color: #ccc;
-  text-align: center;
-  padding: 20px 0;
-  font-size: 14px;
-}
-
-/* ---------------------------------
-   LIGHT & DARK MODE TRANSITIONS
----------------------------------- */
-body.light-mode {
-  background: linear-gradient(135deg, #ffffff, #f0f0f0, #e8eaf6);
-  color: #333;
-}
-
-body.dark-mode {
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  color: #eee;
-}
-
-/* Dark mode adjustments */
-body.dark-mode header {
-  background: rgba(0,0,0,0.85);
-}
-
-body.dark-mode .services {
-  background: rgba(30,30,30,0.7);
-}
-
-body.dark-mode .service-item {
-  background: rgba(45,45,45,0.9);
-  color: #ddd;
-}
-
-body.dark-mode .price {
-  color: #b39ddb;
-}
-
-body.dark-mode .contact {
-  background: linear-gradient(135deg, #4a148c, #311b92);
-}
-
-/* ---------------------------------
-   FLOATING ABSTRACT BLOBS
----------------------------------- */
 .background-blobs {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;
   overflow: hidden;
   pointer-events: none;
 }
 
-/* Create 3 softly blurred blobs */
 .background-blobs::before,
 .background-blobs::after,
-.background-blobs div {
+.background-blobs div::before {
   content: "";
   position: absolute;
+  width: 600px;
+  height: 600px;
   border-radius: 50%;
   filter: blur(100px);
-  opacity: 0.6;
+  opacity: 0.4;
   animation: floatBlobs 20s ease-in-out infinite alternate;
-  transition: background 1.5s ease, opacity 1.5s ease;
 }
 
-/* Blob #1 */
 .background-blobs::before {
-  width: 400px;
-  height: 400px;
-  top: -100px;
-  left: -100px;
-  background: radial-gradient(circle, #ff80ab, #ff6584);
-  animation-delay: 0s;
+  background: radial-gradient(circle at center, #6c63ff, transparent 70%);
+  top: -200px;
+  left: -150px;
 }
 
-/* Blob #2 */
 .background-blobs::after {
-  width: 350px;
-  height: 350px;
-  bottom: -120px;
-  right: -80px;
-  background: radial-gradient(circle, #6c63ff, #9575cd);
-  animation-delay: 5s;
+  background: radial-gradient(circle at center, #ff8a65, transparent 70%);
+  bottom: -250px;
+  right: -150px;
 }
 
-/* Blob #3 (extra div) */
-.background-blobs div {
-  width: 300px;
-  height: 300px;
-  top: 50%;
+.background-blobs div::before {
+  background: radial-gradient(circle at center, #9575cd, transparent 70%);
+  top: 40%;
   left: 30%;
-  background: radial-gradient(circle, #ffb74d, #ff8a65);
-  animation-delay: 2.5s;
 }
 
-/* Floating animation */
 @keyframes floatBlobs {
-  0%   { transform: translate(0, 0) scale(1); }
-  50%  { transform: translate(40px, -30px) scale(1.1); }
-  100% { transform: translate(-20px, 20px) scale(0.95); }
+  from { transform: translateY(0) rotate(0deg); }
+  to { transform: translateY(-30px) rotate(30deg); }
 }
 
-/* DARK MODE BLOBS */
-body.dark-mode .background-blobs::before {
-  background: radial-gradient(circle, #8e24aa, #4a148c);
+/* Dark mode gradient */
+body.dark-mode {
+  background: linear-gradient(120deg, #121212, #1e1e1e, #2c2c2c);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
 }
 
-body.dark-mode .background-blobs::after {
-  background: radial-gradient(circle, #3949ab, #1a237e);
+/* ---------------------------------
+   BLOG PAGE STYLES
+---------------------------------- */
+.blog {
+  text-align: center;
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-body.dark-mode .background-blobs div {
-  background: radial-gradient(circle, #ff4081, #d81b60);
-  opacity: 0.5;
+.blog h2 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: inherit;
+}
+
+.blog .subtitle {
+  color: #444;
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  justify-items: center;
+}
+
+.blog-list article {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  max-width: 320px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-list article:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.blog-list img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.blog-list h3 {
+  font-size: 20px;
+  margin: 15px;
+}
+
+.blog-list h3 a {
+  color: #5c6bc0;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.blog-list h3 a:hover {
+  color: #3f51b5;
+}
+
+.blog-list p {
+  font-size: 16px;
+  color: #555;
+  margin: 0 15px 20px;
+}
+
+.blog-list .read-more {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #3f51b5;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.blog-list .read-more:hover {
+  color: #1a237e;
+  text-decoration: underline;
+}
+
+nav a.active {
+  color: #ffeb3b;
+  font-weight: bold;
+}
+
+/* Dark Mode Adjustments */
+body.dark-mode .blog-list article {
+  background: rgba(30, 30, 30, 0.9);
+  color: #ddd;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .blog-list h3 a {
+  color: #b39ddb;
+}
+
+body.dark-mode .blog-list p {
+  color: #ccc;
+}
+
+body.dark-mode .blog .subtitle {
+  color: #aaa;
 }
